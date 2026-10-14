@@ -1,0 +1,163 @@
+method,group,setting,dataset,accuracy_percent,macro_f1_percent
+CNN-TCC,Deep learning,BFH,UO,21.0,15.26
+CNN-TCC,Deep learning,BFH,PU,22.0,19.99
+CNN-TCC,Deep learning,BFH,MCC5,28.0,23.74
+CNN-TCC,Deep learning,BFH,AVG,23.67,19.66
+CNN-TCC,Deep learning,GRS,UO,27.13,27.06
+CNN-TCC,Deep learning,GRS,PU,23.73,19.86
+CNN-TCC,Deep learning,GRS,MCC5,50.35,48.89
+CNN-TCC,Deep learning,GRS,AVG,33.74,31.94
+CNN-TCC,Deep learning,BEL,BEL,46.97,44.08
+QCNN,Deep learning,BFH,UO,1.0,0.94
+QCNN,Deep learning,BFH,PU,30.0,29.06
+QCNN,Deep learning,BFH,MCC5,8.0,7.6
+QCNN,Deep learning,BFH,AVG,13.0,12.53
+QCNN,Deep learning,GRS,UO,27.92,27.07
+QCNN,Deep learning,GRS,PU,46.03,37.19
+QCNN,Deep learning,GRS,MCC5,53.65,53.68
+QCNN,Deep learning,GRS,AVG,42.53,39.31
+QCNN,Deep learning,BEL,BEL,53.94,49.07
+WDCNN,Deep learning,BFH,UO,4.0,3.73
+WDCNN,Deep learning,BFH,PU,26.0,24.04
+WDCNN,Deep learning,BFH,MCC5,10.0,10.75
+WDCNN,Deep learning,BFH,AVG,13.33,12.84
+WDCNN,Deep learning,GRS,UO,26.87,25.53
+WDCNN,Deep learning,GRS,PU,44.26,35.65
+WDCNN,Deep learning,GRS,MCC5,53.99,53.61
+WDCNN,Deep learning,GRS,AVG,41.71,38.26
+WDCNN,Deep learning,BEL,BEL,61.21,59.16
+Moirai 1.1 R Large KNN,Foundation models,BFH,UO,27.0,28.2
+Moirai 1.1 R Large KNN,Foundation models,BFH,PU,36.0,23.64
+Moirai 1.1 R Large KNN,Foundation models,BFH,MCC5,9.0,7.41
+Moirai 1.1 R Large KNN,Foundation models,BFH,AVG,24.0,19.75
+Moirai 1.1 R Large KNN,Foundation models,GRS,UO,71.3,71.97
+Moirai 1.1 R Large KNN,Foundation models,GRS,PU,31.68,25.12
+Moirai 1.1 R Large KNN,Foundation models,GRS,MCC5,42.97,41.27
+Moirai 1.1 R Large KNN,Foundation models,GRS,AVG,48.65,46.12
+Moirai 1.1 R Large KNN,Foundation models,BEL,BEL,52.73,47.06
+Moirai 1.1 R Large XGBoost,Foundation models,BFH,UO,22.0,25.53
+Moirai 1.1 R Large XGBoost,Foundation models,BFH,PU,38.0,27.15
+Moirai 1.1 R Large XGBoost,Foundation models,BFH,MCC5,34.0,29.58
+Moirai 1.1 R Large XGBoost,Foundation models,BFH,AVG,31.33,27.42
+Moirai 1.1 R Large XGBoost,Foundation models,GRS,UO,73.13,73.42
+Moirai 1.1 R Large XGBoost,Foundation models,GRS,PU,30.91,24.11
+Moirai 1.1 R Large XGBoost,Foundation models,GRS,MCC5,49.74,49.86
+Moirai 1.1 R Large XGBoost,Foundation models,GRS,AVG,51.26,49.13
+Moirai 1.1 R Large XGBoost,Foundation models,BEL,BEL,50.3,50.08
+Moirai 1.1 R Large SVM,Foundation models,BFH,UO,27.0,28.9
+Moirai 1.1 R Large SVM,Foundation models,BFH,PU,31.0,23.6
+Moirai 1.1 R Large SVM,Foundation models,BFH,MCC5,11.0,7.05
+Moirai 1.1 R Large SVM,Foundation models,BFH,AVG,23.0,19.85
+Moirai 1.1 R Large SVM,Foundation models,GRS,UO,82.44,82.79
+Moirai 1.1 R Large SVM,Foundation models,GRS,PU,34.33,27.08
+Moirai 1.1 R Large SVM,Foundation models,GRS,MCC5,45.83,45.26
+Moirai 1.1 R Large SVM,Foundation models,GRS,AVG,54.2,51.71
+Moirai 1.1 R Large SVM,Foundation models,BEL,BEL,61.52,57.54
+Moirai 2 Small KNN,Foundation models,BFH,UO,19.0,20.21
+Moirai 2 Small KNN,Foundation models,BFH,PU,37.0,27.83
+Moirai 2 Small KNN,Foundation models,BFH,MCC5,18.0,18.38
+Moirai 2 Small KNN,Foundation models,BFH,AVG,24.67,22.14
+Moirai 2 Small KNN,Foundation models,GRS,UO,47.97,47.78
+Moirai 2 Small KNN,Foundation models,GRS,PU,26.05,20.37
+Moirai 2 Small KNN,Foundation models,GRS,MCC5,31.94,29.9
+Moirai 2 Small KNN,Foundation models,GRS,AVG,35.32,32.69
+Moirai 2 Small KNN,Foundation models,BEL,BEL,49.39,42.94
+Moirai 2 Small XGBoost,Foundation models,BFH,UO,20.0,20.69
+Moirai 2 Small XGBoost,Foundation models,BFH,PU,35.0,25.5
+Moirai 2 Small XGBoost,Foundation models,BFH,MCC5,17.0,17.32
+Moirai 2 Small XGBoost,Foundation models,BFH,AVG,24.0,21.17
+Moirai 2 Small XGBoost,Foundation models,GRS,UO,55.18,54.84
+Moirai 2 Small XGBoost,Foundation models,GRS,PU,28.48,22.44
+Moirai 2 Small XGBoost,Foundation models,GRS,MCC5,38.8,38.91
+Moirai 2 Small XGBoost,Foundation models,GRS,AVG,40.82,38.73
+Moirai 2 Small XGBoost,Foundation models,BEL,BEL,55.76,55.76
+Moirai 2 Small SVM,Foundation models,BFH,UO,18.0,20.39
+Moirai 2 Small SVM,Foundation models,BFH,PU,38.0,27.92
+Moirai 2 Small SVM,Foundation models,BFH,MCC5,1.0,0.98
+Moirai 2 Small SVM,Foundation models,BFH,AVG,19.0,16.43
+Moirai 2 Small SVM,Foundation models,GRS,UO,61.73,59.99
+Moirai 2 Small SVM,Foundation models,GRS,PU,28.92,22.68
+Moirai 2 Small SVM,Foundation models,GRS,MCC5,37.93,36.51
+Moirai 2 Small SVM,Foundation models,GRS,AVG,42.86,39.73
+Moirai 2 Small SVM,Foundation models,BEL,BEL,61.52,58.78
+Chronos 2 KNN,Foundation models,BFH,UO,25.0,20.94
+Chronos 2 KNN,Foundation models,BFH,PU,13.0,13.31
+Chronos 2 KNN,Foundation models,BFH,MCC5,24.0,18.83
+Chronos 2 KNN,Foundation models,BFH,AVG,20.67,17.69
+Chronos 2 KNN,Foundation models,GRS,UO,64.09,64.5
+Chronos 2 KNN,Foundation models,GRS,PU,20.42,17.67
+Chronos 2 KNN,Foundation models,GRS,MCC5,30.99,29.2
+Chronos 2 KNN,Foundation models,GRS,AVG,38.5,37.12
+Chronos 2 KNN,Foundation models,BEL,BEL,59.09,58.95
+Chronos 2 XGBoost,Foundation models,BFH,UO,21.0,19.8
+Chronos 2 XGBoost,Foundation models,BFH,PU,11.0,10.98
+Chronos 2 XGBoost,Foundation models,BFH,MCC5,12.0,12.11
+Chronos 2 XGBoost,Foundation models,BFH,AVG,14.67,14.29
+Chronos 2 XGBoost,Foundation models,GRS,UO,59.63,59.84
+Chronos 2 XGBoost,Foundation models,GRS,PU,18.76,19.78
+Chronos 2 XGBoost,Foundation models,GRS,MCC5,31.86,31.69
+Chronos 2 XGBoost,Foundation models,GRS,AVG,36.75,37.11
+Chronos 2 XGBoost,Foundation models,BEL,BEL,54.24,53.21
+Chronos 2 SVM,Foundation models,BFH,UO,29.0,29.26
+Chronos 2 SVM,Foundation models,BFH,PU,28.0,24.64
+Chronos 2 SVM,Foundation models,BFH,MCC5,4.0,3.39
+Chronos 2 SVM,Foundation models,BFH,AVG,20.33,19.09
+Chronos 2 SVM,Foundation models,GRS,UO,75.62,74.94
+Chronos 2 SVM,Foundation models,GRS,PU,28.04,22.64
+Chronos 2 SVM,Foundation models,GRS,MCC5,34.29,32.78
+Chronos 2 SVM,Foundation models,GRS,AVG,45.98,43.45
+Chronos 2 SVM,Foundation models,BEL,BEL,56.67,52.19
+Chronos 2 Small KNN,Foundation models,BFH,UO,18.0,16.65
+Chronos 2 Small KNN,Foundation models,BFH,PU,22.0,22.29
+Chronos 2 Small KNN,Foundation models,BFH,MCC5,23.0,18.46
+Chronos 2 Small KNN,Foundation models,BFH,AVG,21.0,19.13
+Chronos 2 Small KNN,Foundation models,GRS,UO,52.16,52.61
+Chronos 2 Small KNN,Foundation models,GRS,PU,16.11,13.76
+Chronos 2 Small KNN,Foundation models,GRS,MCC5,24.39,21.24
+Chronos 2 Small KNN,Foundation models,GRS,AVG,30.89,29.2
+Chronos 2 Small KNN,Foundation models,BEL,BEL,52.12,50.0
+Chronos 2 Small XGBoost,Foundation models,BFH,UO,14.0,15.0
+Chronos 2 Small XGBoost,Foundation models,BFH,PU,22.0,17.01
+Chronos 2 Small XGBoost,Foundation models,BFH,MCC5,12.0,11.89
+Chronos 2 Small XGBoost,Foundation models,BFH,AVG,16.0,14.63
+Chronos 2 Small XGBoost,Foundation models,GRS,UO,59.37,59.59
+Chronos 2 Small XGBoost,Foundation models,GRS,PU,16.67,15.61
+Chronos 2 Small XGBoost,Foundation models,GRS,MCC5,28.99,27.88
+Chronos 2 Small XGBoost,Foundation models,GRS,AVG,35.01,34.36
+Chronos 2 Small XGBoost,Foundation models,BEL,BEL,58.48,58.42
+Chronos 2 Small SVM,Foundation models,BFH,UO,13.0,12.7
+Chronos 2 Small SVM,Foundation models,BFH,PU,10.0,9.76
+Chronos 2 Small SVM,Foundation models,BFH,MCC5,12.0,9.15
+Chronos 2 Small SVM,Foundation models,BFH,AVG,11.67,10.54
+Chronos 2 Small SVM,Foundation models,GRS,UO,65.01,63.76
+Chronos 2 Small SVM,Foundation models,GRS,PU,17.77,15.14
+Chronos 2 Small SVM,Foundation models,GRS,MCC5,30.03,28.06
+Chronos 2 Small SVM,Foundation models,GRS,AVG,37.6,35.65
+Chronos 2 Small SVM,Foundation models,BEL,BEL,61.21,60.89
+ZARA,Agents,BFH,UO,45.0,39.3
+ZARA,Agents,BFH,PU,39.0,40.31
+ZARA,Agents,BFH,MCC5,35.0,24.9
+ZARA,Agents,BFH,AVG,39.67,34.84
+ZARA,Agents,GRS,UO,63.43,65.26
+ZARA,Agents,GRS,PU,41.94,43.23
+ZARA,Agents,GRS,MCC5,47.66,44.22
+ZARA,Agents,GRS,AVG,51.01,50.9
+ZARA,Agents,BEL,BEL,44.24,44.17
+FETA,Agents,BFH,UO,34.0,32.32
+FETA,Agents,BFH,PU,36.0,33.84
+FETA,Agents,BFH,MCC5,17.0,17.65
+FETA,Agents,BFH,AVG,29.0,27.94
+FETA,Agents,GRS,UO,53.73,53.46
+FETA,Agents,GRS,PU,35.21,30.79
+FETA,Agents,GRS,MCC5,38.02,36.9
+FETA,Agents,GRS,AVG,42.32,40.38
+FETA,Agents,BEL,BEL,52.12,51.48
+Agentic4PDM,Agentic4PDM,BFH,UO,62.0,61.93
+Agentic4PDM,Agentic4PDM,BFH,PU,44.0,36.88
+Agentic4PDM,Agentic4PDM,BFH,MCC5,45.0,43.6
+Agentic4PDM,Agentic4PDM,BFH,AVG,50.33,47.47
+Agentic4PDM,Agentic4PDM,GRS,UO,86.37,86.12
+Agentic4PDM,Agentic4PDM,GRS,PU,47.24,38.54
+Agentic4PDM,Agentic4PDM,GRS,MCC5,52.95,52.93
+Agentic4PDM,Agentic4PDM,GRS,AVG,62.19,59.2
+Agentic4PDM,Agentic4PDM,BEL,BEL,74.55,73.95
