@@ -75,3 +75,10 @@ nav .nav-code:hover{border-color:var(--ink);color:var(--ink)}
 .card-note{margin-top:auto;padding-top:16px;font-size:11px;line-height:1.75;color:var(--muted)}
 .simpler-block>.takeaway{margin-top:28px;max-width:820px;border-left:2px solid var(--gold);padding-left:17px;color:#787668;font-size:13px;line-height:1.8}
 @media(max-width:850px){.simpler-grid{grid-template-columns:1fr}.simpler-card{padding:22px 20px}.simpler-intro h3{font-size:26px}.demo-chapters button{font-size:11px;padding:7px 11px}nav .nav-code{width:auto;margin:5px 0 0;padding:9px 18px}}
+
+/* 2026-10-14 · adaptive video quality control */
+.demo-quality{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.demo-quality[hidden]{display:none}
+.demo-quality select{font:500 12px var(--sans);color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:6px;padding:5px 8px;cursor:pointer}
+.demo-quality select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:600px){.demo-quality{font-size:10px}.demo-quality select{font-size:11px}}

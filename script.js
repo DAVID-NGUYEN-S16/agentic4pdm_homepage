@@ -59,17 +59,92 @@ $$('#navigation a').forEach(a=>a.addEventListener('click',closeMenu));
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.filter(e=>e.isIntersecting).forEach(e=>{$$('#navigation a').forEach(a=>a.classList.toggle('active',a.hash===`#${e.target.id}`));});},{rootMargin:'-15% 0px -70% 0px'});$$('section[id]').forEach(s=>observer.observe(s));}
 
-// Fetch the demo MP4 only after the visitor presses Play (fast-start file, plays while it downloads).
+// The demo streams as HLS: the original 1080p plus lighter 720p and 360p renditions, so slow connections
+// start quickly and fast ones get full 1080p. Nothing loads until the visitor presses Play.
+// hls.js loads on demand; the plain MP4 is the fallback.
 const demoVideo = $('#demo-video'), demoPlay = $('#demo-play'), demoStatus = $('#demo-status');
+const demoQualityBox = $('#demo-quality-box'), demoQuality = $('#demo-quality');
+let demoHls = null, demoStarted = false;
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const el = document.createElement('script');
+    el.src = src; el.onload = resolve; el.onerror = () => reject(new Error('script'));
+    document.head.appendChild(el);
+  });
+}
+let demoHlsScript = null;
+function demoLoadHls() {
+  if (window.Hls) return Promise.resolve();
+  if (!demoHlsScript) demoHlsScript = loadScript('assets/vendor/hls.min.js').catch((e) => { demoHlsScript = null; throw e; });
+  return demoHlsScript;
+}
+// Warm-up: shortly before the demo scrolls into view, fetch the player library and the first ~10 s of the
+// 720p rendition (about 1 MB together), so Play starts at once. Skipped when the visitor asked to save data or is
+// on a very slow connection. The files land in the HTTP cache, which hls.js then reads.
+function demoWarmUp() {
+  const c = navigator.connection;
+  if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ''))) return;
+  demoLoadHls().then(() => {
+    const base = new URL(demoVideo.dataset.hls, location.href);
+    ['master.m3u8', '720p/index.m3u8', '720p/init.mp4', '720p/seg_000.m4s', '720p/seg_001.m4s']
+      .forEach((file) => fetch(new URL(file, base), {priority: 'low'}).catch(() => {}));
+  }).catch(() => {});
+}
+if ('IntersectionObserver' in window) {
+  const warm = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) { warm.disconnect(); demoWarmUp(); }
+  }, {rootMargin: '900px 0px'});
+  warm.observe($('#demo'));
+}
+function demoStop() {
+  if (demoHls) { demoHls.destroy(); demoHls = null; }
+  demoQualityBox.hidden = true; demoStarted = false;
+}
 function demoFailed(message) {
+  demoStop();
   demoVideo.pause(); demoVideo.removeAttribute('src'); demoVideo.load(); demoVideo.controls = false;
   demoPlay.hidden = false; demoPlay.disabled = false; demoPlay.querySelector('span').textContent = 'Try again';
   demoStatus.textContent = message;
 }
+function demoUseMp4() {
+  const t = demoVideo.currentTime;
+  if (demoHls) { demoHls.destroy(); demoHls = null; }
+  demoQualityBox.hidden = true;
+  demoVideo.src = demoVideo.dataset.src;
+  demoVideo.addEventListener('loadedmetadata', () => { if (t) demoVideo.currentTime = t; demoVideo.play().catch(() => {}); }, {once:true});
+}
+async function demoAttach() {
+  const url = demoVideo.dataset.hls;
+  try {
+    await demoLoadHls();
+    if (window.Hls && window.Hls.isSupported()) {
+      const Hls = window.Hls;
+      // Assume about 1.5 Mbit/s until the first segment is measured, so playback starts on 720p and moves up.
+      demoHls = new Hls({enableWorker:false, abrEwmaDefaultEstimate:1500000, maxBufferLength:30, backBufferLength:30});
+      let networkRetries = 0, mediaRetries = 0;
+      demoHls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+        const heights = data.levels.map((l, i) => ({h: l.height, i})).sort((x, y) => y.h - x.h);
+        demoQuality.innerHTML = '<option value="-1">Auto</option>' + heights.map((l) => `<option value="${l.i}">${l.h}p</option>`).join('');
+        demoQualityBox.hidden = false;
+      });
+      demoHls.on(Hls.Events.ERROR, (event, data) => {
+        if (!data.fatal) return;
+        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && networkRetries++ < 1) { demoHls.startLoad(); return; }
+        if (data.type === Hls.ErrorTypes.MEDIA_ERROR && mediaRetries++ < 1) { demoHls.recoverMediaError(); return; }
+        demoUseMp4();
+      });
+      demoHls.loadSource(url); demoHls.attachMedia(demoVideo);
+      return;
+    }
+  } catch { /* fall through to native HLS or MP4 */ }
+  if (demoVideo.canPlayType('application/vnd.apple.mpegurl')) demoVideo.src = url;
+  else demoVideo.src = demoVideo.dataset.src;
+}
+demoQuality.addEventListener('change', () => { if (demoHls) demoHls.currentLevel = Number(demoQuality.value); });
+demoVideo.addEventListener('error', () => { if (demoStarted && !demoHls) demoFailed('The video could not load. Please try again.'); });
 async function startDemo() {
   demoPlay.disabled = true; demoPlay.querySelector('span').textContent = 'Loading…'; demoStatus.textContent = '';
-  demoVideo.addEventListener('error', () => demoFailed('The video could not load. Please try again.'), {once:true});
-  if (!demoVideo.getAttribute('src')) demoVideo.src = demoVideo.dataset.src;
+  if (!demoStarted) { demoStarted = true; await demoAttach(); }
   demoVideo.controls = true; demoPlay.hidden = true; demoPlay.disabled = false;
   try { await demoVideo.play(); } catch { demoStatus.textContent = 'Press Play in the video controls to start.'; }
 }
@@ -78,7 +153,7 @@ if (demoPlay) demoPlay.addEventListener('click', startDemo);
 const demoChapters = $$('.demo-chapters button');
 function seekDemo(t) {
   const go = () => { demoVideo.currentTime = t; demoVideo.play().catch(() => {}); };
-  if (!demoVideo.getAttribute('src')) { startDemo(); demoVideo.addEventListener('loadedmetadata', go, {once:true}); }
+  if (!demoStarted) { startDemo(); demoVideo.addEventListener('loadedmetadata', go, {once:true}); }
   else if (demoVideo.readyState >= 1) go(); else demoVideo.addEventListener('loadedmetadata', go, {once:true});
 }
 demoChapters.forEach((b) => b.addEventListener('click', () => seekDemo(Number(b.dataset.t))));
